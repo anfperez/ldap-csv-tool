@@ -151,12 +151,14 @@ But I also got this error:
 ```
 After doing some research, I have determined that my path is incorrect. I'm still trying to get the correct path.
 
+I posted a question about it on Stack Overflow: https://stackoverflow.com/questions/57561302/convert-ldap-search-results-into-csv
+There were some helpful suggestions, but unfortunately nothing worked.
+
 ### RSPEC Tests
 
 I installed the rspec gem and began to make a few tests to determine if the functions were working. Unfortunately, I was limited in the type of tests I could make because I could neither add entries nor export the search results to CSV.
 
 I made a simple test to check if "rows" was equal to the array of arrays that is provided when example.csv is uploaded. This worked.
-
 
 
 
