@@ -1,12 +1,12 @@
 # Ruby LDAP CLI Tool
 
 ## Built Using
-*Visual Studio Code
-*Ruby
-..*Ruby gems
-..*CSV
-..*ldap-net
-*LDAP
+* Visual Studio Code
+* Ruby
+..* Ruby gems
+..* CSV
+..* ldap-net
+* LDAP
 
 ## Features
 Users can upload a CSV file to add entries to the LDAP server
@@ -23,8 +23,6 @@ You should see the following message
 "Added 3 entries to ou=people,dc=example,dc=org"
 
 You can also perform a search for certain entries and save those results to a CSV.
-
-
 
 ## Step by Step Building process
 
@@ -84,7 +82,10 @@ But this also did not work, since I already have a connection open to that LDAP 
 
 Whenever I ran this part of the program, I did not get any errors. However, my "Christine" entry was never added to the LDAP server. I am wondering if I added it to a different place, by mistake, since I do see that there are 7 entries in the LDAP server, but only 6 responses.
 
-[image]
+```
+# numResponses: 7
+# numEntries: 6
+```
 
 Since I could not add my entry to the LDAP server, I could not complete this part of the assignment. I did a lot of research trying to figure out if anything was wrong, but for now, I was not able to figure it out.
 
