@@ -97,9 +97,9 @@ Using example.csv, I used the following code:
 rows = CSV.open('example.csv', headers:true, return_headers:true).map(&:fields)
 ```
 To produce an array of arrays:
-
-[image]
-
+```
+[["cn", "sn", "mail", "uid"], ["Angela", "Jones", "angela@example.com", "angela"]]
+```
 The next step here would be to add this as an entry to LDAP, once I figure out how to get the ldap.add function to work.
 
 ### Exporting LDAP Search to CSV
@@ -124,8 +124,21 @@ end
 ```
 This produces the following result.
 ```
-[["cn", "sn", "mail", "uid"], ["Angela", "Jones", "angela@example.com", "angela"]]
+DN: uid=jane,ou=people,dc=example,dc=org
+   dn:
+      --->uid=jane,ou=people,dc=example,dc=org
+   objectclass:
+      --->inetOrgPerson
+   cn:
+      --->Jane
+   sn:
+      --->Doe
+   mail:
+      --->jane@example.org
+   uid:
+      --->jane
 ```
+
 The next step is exporting the data to CSV. This proved challenging. Originally I was planning to use key-value pairs or the .map function. But I realized that the entries have the class Net::LDAP::Entry, so key-value pairs or the .map function won't work. I have been trying to figure the best code to get the info from the entries. So far, the closest I have come is:
 ```ruby
 ldap.search( :base => treebase, :filter => filter ) do |entry|
