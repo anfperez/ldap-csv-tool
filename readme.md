@@ -3,9 +3,9 @@
 ## Built Using
 * Visual Studio Code
 * Ruby
-..* Ruby gems
-..* CSV
-..* ldap-net
+* Ruby gems
+.* CSV
+.* ldap-net
 * LDAP
 
 ## Features
@@ -37,8 +37,8 @@ I am able to view the LDAP image, as well as search and add entries to it on the
 
 Next, I decided to try to manipulate the data in the LDAP server using Ruby. I included the following gems:
 
--ldap/net
--CSV
+*ldap/net
+*CSV
 
 To connect to the LDAP server, I used the following syntax.
 
@@ -123,7 +123,9 @@ ldap.search( :base => treebase, :filter => filter ) do |entry|
 end
 ```
 This produces the following result.
-[image]
+```
+[["cn", "sn", "mail", "uid"], ["Angela", "Jones", "angela@example.com", "angela"]]
+```
 The next step is exporting the data to CSV. This proved challenging. Originally I was planning to use key-value pairs or the .map function. But I realized that the entries have the class Net::LDAP::Entry, so key-value pairs or the .map function won't work. I have been trying to figure the best code to get the info from the entries. So far, the closest I have come is:
 ```ruby
 ldap.search( :base => treebase, :filter => filter ) do |entry|
@@ -143,15 +145,17 @@ end
 The lines that are commented out are where I have tried to get the values from each attribute in the right format.
 
 Originally, this worked with the headers.
-[image]
-
+```
+dn,objectclass,cn,sn,mail,uid
+```
 But I also got this error:
 ```
 #<OpenStruct extended_response=nil, code=53, error_message="no global superior knowledge", matched_dn="", message="Unwilling to perform">
 ```
 After doing some research, I have determined that my path is incorrect. I'm still trying to get the correct path.
 
-I posted a question about it on Stack Overflow: https://stackoverflow.com/questions/57561302/convert-ldap-search-results-into-csv
+I posted a question about it on [Stack Overflow](https://stackoverflow.com/questions/57561302/convert-ldap-search-results-into-csv).
+
 There were some helpful suggestions, but unfortunately nothing worked.
 
 ### RSPEC Tests
