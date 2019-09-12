@@ -22,7 +22,6 @@ ldap = Net::LDAP.new  :host => '127.0.0.1',
 
 puts ldap.get_operation_result
 
-
 filter = Net::LDAP::Filter.eq( "cn", "Jane*")
 treebase = "dc=example,dc=org"
 
@@ -46,7 +45,7 @@ ldap.search( :base => treebase, :filter => filter ) do |entry|
 end
 end
 
-=begin
+=begin another attempt to get the LDAP information into CSV
 ldap.search( :base => treebase, :filter => filter ) do |entry|
   CSV.open("mysearch.csv", "w") do |csv|
 
@@ -72,7 +71,7 @@ attr = {
   :uid => "christine"
 }
 
-=begin first attempt at trying to add an entry -- opening a connection again, then using ldap.add
+=begin first attempt at trying to add an entry -- opening a new connection, then using ldap.add
 Net::LDAP.open(:host => '127.0.0.1') do |ldap|
   ldap.add(:dn => dn, :attributes => attr)
 end
@@ -105,22 +104,7 @@ end
 
 data_array = [] 
 
-ldap.search( :base => treebase, :filter => filter ) do |entry|
-  CSV.open("mysearch.csv", "w") do |csv|
-
-     #entry.each do |attribute, values|
-        csv << entry.each do |entry|
-        #values.each do |value|
-         # csv << [value]
-     # end
-      # csv << values.each do |value|
-   #end
-  end
-end
-end
-
-=begin
-# this one kinda works but there has to be a better solution
+=begin this is where I was trying to experiment with putting a few different functions into one long one
 ldap.search( :base => treebase, :filter => filter ) do |entry|
   CSV.open("mysearch.csv", "w") do |csv|
   puts "DN: #{entry.dn}"
@@ -140,7 +124,8 @@ ldap.search( :base => treebase, :filter => filter ) do |entry|
   end 
 end
 =end
-=begin
+
+=begin attempted first to search for LDAP info, then get it into CSV format.
 ldap.search( :base => treebase, :filter => filter ) do |entry|
   CSV.open("mysearch.csv", "w") do |csv|
     csv <<  entry.each do |attribute, values|
@@ -156,12 +141,14 @@ end
 end
 end
 =end
+
 #this needs to become an LDAP entry
 rows = CSV.open('example.csv', headers:true, return_headers:true).map(&:fields)
 puts "here are rows"
 p rows
-p rows.class
-=begin
+#p rows.class
+
+#begin another attempt at getting the CSV to generate itself
 csv_str = rows.inject([]) { |csv, row|  csv << CSV.generate_line(row) }.join("")
 File.open("ss.csv", "w") {|f| f.write(rows.inject([]) { |csv, row|  csv << CSV.generate_line(row) }.join(""))}
 
@@ -188,10 +175,6 @@ output = CSV.foreach('example.csv') do |row|
 end
 =end
 puts "here is output"
-
-
-
-
 
 =begin
 Net::LDAP.open (:host => '127.0.0.1') do |ldap|
