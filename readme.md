@@ -197,7 +197,6 @@ Command to search LDAP directory
 ```
 ldapsearch -H ldap://localhost:1300 -D "cn=admin,dc=example,dc=org" -w admin -b 'dc=example,dc=org' 'objectClass=*' 
 ```
-
 Command to input new data
 ```
 ldapmodify -H ldap://localhost:1300 -D "cn=admin,dc=example,dc=org" -w admin <<+
