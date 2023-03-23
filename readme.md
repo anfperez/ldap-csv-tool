@@ -19,7 +19,7 @@ You can upload a CSV file to add entries to the LDAP server.
 To do this, run `ruby my-ldap-cli-dir path/to/file.csv` in your terminal
 
 You should see the following message
-"Added 3 entries to ou=people,dc=example,dc=org"
+`"Added 3 entries to ou=people,dc=example,dc=org"`
 
 ## Goal 2
 
@@ -38,8 +38,8 @@ I am able to view the LDAP image, as well as search and add entries to it on the
 
 Next, I decided to try to manipulate the data in the LDAP server using Ruby. I included the following gems:
 
-*ldap/net
-*CSV
+* ldap/net
+* CSV
 
 To connect to the LDAP server, I used the following syntax.
 
@@ -167,10 +167,6 @@ But I also got this error:
 #<OpenStruct extended_response=nil, code=53, error_message="no global superior knowledge", matched_dn="", message="Unwilling to perform">
 ```
 After doing some research, I have determined that my path is incorrect. I was unable to figure out the correct path.
-
-I posted a question about it on [Stack Overflow](https://stackoverflow.com/questions/57561302/convert-ldap-search-results-into-csv).
-
-There were some helpful suggestions, but unfortunately nothing worked.
 
 ### RSPEC Tests
 
