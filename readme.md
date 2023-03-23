@@ -166,7 +166,7 @@ But I also got this error:
 ```
 #<OpenStruct extended_response=nil, code=53, error_message="no global superior knowledge", matched_dn="", message="Unwilling to perform">
 ```
-After doing some research, I have determined that my path is incorrect. I'm still trying to get the correct path.
+After doing some research, I have determined that my path is incorrect. I was unable to figure out the correct path.
 
 I posted a question about it on [Stack Overflow](https://stackoverflow.com/questions/57561302/convert-ldap-search-results-into-csv).
 
@@ -177,9 +177,9 @@ There were some helpful suggestions, but unfortunately nothing worked.
 I installed the rspec gem and began to make a few tests to determine if the functions were working. Unfortunately, I was limited in the type of tests I could make because I could neither add entries nor export the search results to CSV.
 
 I wrote three rspec tests:
-*CSV file loads correctly
-*LDAP server is connected
-*CSV file is read and returns rows
+* CSV file loads correctly
+* LDAP server is connected
+* CSV file is read and returns rows
 
 ## Commands
 
