@@ -9,14 +9,14 @@
 * LDAP
 
 ## Features
-Users can upload a CSV file to add entries to the LDAP server
-Users can search the LDAP server and save their results to a CSV file
+* Users can upload a CSV file to add entries to the LDAP server
+* Users can search the LDAP server and save their results to a CSV file
 
 # Goals of this Assignment
 
 ## Goal 1
 You can upload a CSV file to add entries to the LDAP server.
-To do this, run "ruby my-ldap-cli-dir path/to/file.csv" in your terminal
+To do this, run `ruby my-ldap-cli-dir path/to/file.csv` in your terminal
 
 You should see the following message
 "Added 3 entries to ou=people,dc=example,dc=org"
